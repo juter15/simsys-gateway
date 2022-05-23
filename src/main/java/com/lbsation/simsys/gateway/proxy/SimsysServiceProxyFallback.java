@@ -21,8 +21,10 @@ public class SimsysServiceProxyFallback implements SimsysServiceProxy{
     }
 
     @Override
-    public StoreResponse getStoreUser(String storeSeq) {
+    public StoreResponse getStoreUser(String storeSeq, StoreRequest storeRequest) {
         log.error(cause.getMessage());
         return null;
     }
+
+
 }

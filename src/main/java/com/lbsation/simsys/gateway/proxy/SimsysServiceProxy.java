@@ -14,5 +14,5 @@ public interface SimsysServiceProxy {
     StoreResponse getStoreList(@RequestHeader(value = "FRANCHISE_ID") String franchiseSeq, @RequestBody StoreRequest storeRequest);
 
     @PostMapping("/franchise/store/user")
-    StoreResponse getStoreUser(@RequestHeader(value = "Store_ID") String storeSeq);
+    StoreResponse getStoreUser(@RequestHeader(value = "Store_ID") String storeSeq, @RequestBody StoreRequest storeRequest);
 }

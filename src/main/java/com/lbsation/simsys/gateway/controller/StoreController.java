@@ -1,6 +1,7 @@
 package com.lbsation.simsys.gateway.controller;
 
 import com.lbsation.simsys.gateway.model.StoreRequest;
+import com.lbsation.simsys.gateway.model.StoreResponse;
 import com.lbsation.simsys.gateway.proxy.SimsysServiceProxy;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,19 +16,25 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class StoreController {
     private final SimsysServiceProxy simsysServiceProxy;
+
     @PostMapping("/list")
     public ResponseEntity getStoreList(
             @RequestHeader("FRANCHISE_ID") String franchiseSeq,
             @RequestBody StoreRequest storeRequest)
     {
         log.info("###Simsys Gateway LIST- franchiseSeq: {}", franchiseSeq);
-        return ResponseEntity.ok(simsysServiceProxy.getStoreList(franchiseSeq, storeRequest));
+        StoreResponse storeResponse = simsysServiceProxy.getStoreList(franchiseSeq, storeRequest);
+        return ResponseEntity.ok(storeResponse);
     }
 
     @PostMapping("/user")
-    public ResponseEntity getStoreUser(@RequestHeader("STORE_ID") String storeSeq){
+    public ResponseEntity getStoreUser(
+            @RequestHeader("STORE_ID") String storeSeq,
+            @RequestBody StoreRequest storeRequest)
+    {
 
         log.info("###Simsys Gateway USER - storeSeq: {}", storeSeq);
-        return ResponseEntity.ok(simsysServiceProxy.getStoreUser(storeSeq));
+        StoreResponse storeResponse = simsysServiceProxy.getStoreUser(storeSeq, storeRequest);
+        return ResponseEntity.ok(storeResponse);
     }
 }
