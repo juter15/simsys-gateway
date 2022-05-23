@@ -1,0 +1,20 @@
+server:
+  port: 8185
+# Feign Client
+feign:
+  hystrix:
+    enabled: true
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic
+
+# MicroServices
+microservices:
+  simsys-service: ${MS_SIMSYS_SERVICE_URL:http://localhost:8189}
+
+
+simsys:
+  token: ${SIMSYS_TOKEN:7819D2755B26E820F1AED42E94A9F85619846493C21D078DCCEF5D7D67F591721DD4B73A06C90F6E535016EDFB2F24AE5B23DAD015018F23614270E6A497A584}
